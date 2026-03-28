@@ -37,7 +37,7 @@ FindRePKG() {
 repkgPath := FindRePKG()
 
 if (repkgPath = "") {
-    MsgBox("未找到 RePKG.exe ,请手动下载 RePKG.exe 到程序同目录", "错误", "OK Iconx")
+    DllCall("user32\MessageBox", "Ptr", 0, "Str", "未找到 RePKG.exe ,请手动下载 RePKG.exe 到程序同目录", "Str", "错误", "UInt", 0x10)
     Run("https://github.com/notscuffed/repkg/releases")
     ExitApp
 }
@@ -119,19 +119,19 @@ PartFile(*) {
     global TargetFile, OutputDir, StatusLabel
 
     if (TargetFile = "" || !FileExist(TargetFile)) {
-        MsgBox("请先选择一个有效的文件", "错误", "OK Iconx")
+        DllCall("user32\MessageBox", "Ptr", mainGui.Hwnd, "Str", "请先选择一个有效的文件", "Str", "错误", "UInt", 0x10)
         StatusLabel.Value := "错误: 请先选择一个有效的文件"
         return
     }
 
     if (!InStr(TargetFile, ".pkg")) {
-        MsgBox("请选择 .pkg 文件进行提取", "错误", "OK Iconx")
+        DllCall("user32\MessageBox", "Ptr", mainGui.Hwnd, "Str", "请选择 .pkg 文件进行提取", "Str", "错误", "UInt", 0x10)
         StatusLabel.Value := "错误: 请选择 .pkg 文件进行提取"
         return
     }
 
     if (OutputDir = "") {
-        MsgBox("请先选择输出目录", "错误", "OK Iconx")
+        DllCall("user32\MessageBox", "Ptr", mainGui.Hwnd, "Str", "请先选择输出目录", "Str", "错误", "UInt", 0x10)
         StatusLabel.Value := "错误: 请先选择输出目录"
         return
     }
@@ -145,7 +145,7 @@ PartFile(*) {
                 FileDelete A_LoopFilePath
             Loop Files OutputDir . "\*.tex"
                 FileDelete A_LoopFilePath
-            MsgBox("成功提取媒体文件", "完成", "OK Iconi")
+            DllCall("user32\MessageBox", "Ptr", mainGui.Hwnd, "Str", "成功提取媒体文件", "Str", "完成", "UInt", 0x40)
             Run("explorer.exe " . OutputDir)
             StatusLabel.Value := "提取完成！"
         } else {
@@ -160,19 +160,19 @@ ALLFile(*) {
     global TargetFile, OutputDir, StatusLabel
 
     if (TargetFile = "" || !FileExist(TargetFile)) {
-        MsgBox("请先选择一个有效的文件", "错误", "OK Iconx")
+        DllCall("user32\MessageBox", "Ptr", mainGui.Hwnd, "Str", "请先选择一个有效的文件", "Str", "错误", "UInt", 0x10)
         StatusLabel.Value := "错误: 请先选择一个有效的文件"
         return
     }
 
     if (!InStr(TargetFile, ".pkg")) {
-        MsgBox("请选择 .pkg 文件进行提取", "错误", "OK Iconx")
+        DllCall("user32\MessageBox", "Ptr", mainGui.Hwnd, "Str", "请选择 .pkg 文件进行提取", "Str", "错误", "UInt", 0x10)
         StatusLabel.Value := "错误: 请选择 .pkg 文件进行提取"
         return
     }
 
     if (OutputDir = "") {
-        MsgBox("请先选择输出目录", "错误", "OK Iconx")
+        DllCall("user32\MessageBox", "Ptr", mainGui.Hwnd, "Str", "请先选择输出目录", "Str", "错误", "UInt", 0x10)
         StatusLabel.Value := "错误: 请先选择输出目录"
         return
     }
@@ -182,7 +182,7 @@ ALLFile(*) {
     try {
         exitCode := RunWait(A_ComSpec " /c " cmd, , "Hide")
         if (exitCode = 0) {
-            MsgBox("成功提取所有文件", "完成", "OK Iconi")
+            DllCall("user32\MessageBox", "Ptr", mainGui.Hwnd, "Str", "成功提取所有文件", "Str", "完成", "UInt", 0x40)
             Run("explorer.exe " . OutputDir)
             StatusLabel.Value := "提取完成！"
         } else {
