@@ -15,7 +15,7 @@
 ## 快速开始
 
 ### 方法 1：直接使用
-1. 下载 [Release](https://github.com/Zerin-emm/RePKG-GUI/releases) 中的 `RePKG-GUI_x64.exe`
+1. 下载 [Release](https://github.com/Zerin-emm/RePKG-GUI/releases) 中的 `RePKG_GUI_x64.exe`
 2. 双击运行
 
 ### 方法 2：从源码运行

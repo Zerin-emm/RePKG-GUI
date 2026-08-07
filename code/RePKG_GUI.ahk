@@ -20,7 +20,7 @@ global LastSplitFile := ""
 
 MainGui := Gui()
 MainGui.Title := "RePKG-GUI"
-MainGui.BackColor := "0xF8FBFD"
+MainGui.BackColor := "0xFFFFFF"
 MainGui.SetFont("s16", "Microsoft YaHei")
 MainGui.Add("Text", "x15 y10 w460 ", "RePKG-GUI")
 MainGui.SetFont("s13", "Microsoft YaHei")
